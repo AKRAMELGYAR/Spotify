@@ -15,6 +15,11 @@ app.use(cookieParser())
 const AppError = require('./utils/AppError')
 ////////ROUTES
 
+
+//////test routes
+app.get('/',(req,res,next)=>{
+    res.send('hello from Spotify Api')
+})
 ///USERS
 const userRoutes = require('./routes/userRoutes')
 app.use('/users' , userRoutes)
