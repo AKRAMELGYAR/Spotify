@@ -11,7 +11,7 @@ const signup = CatchAsync(async(req,res,next) => {
     if(olduser){
         return next(new AppError('user is already exist please login' , 400))
     }
-    const hashPassword = await bcrypt.hash(toString(password),12)
+    const hashPassword = await bcrypt.hash(password,12)
     const newUser = new User({
         username,
         email,
@@ -43,7 +43,7 @@ const login = CatchAsync(async(req,res,next)=>{
     {
         return next(new AppError('user not found please Sign up' , 404))
     }
-    const matchpass =  bcrypt.compare(toString(password) , user.password)
+    const matchpass = await bcrypt.compare(password, user.password)
     if(matchpass)
     {
        const token = GenerateToken({email : user.email , Id : user._id})
