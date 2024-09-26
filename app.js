@@ -21,8 +21,12 @@ app.get('/',(req,res,next)=>{
     res.send('hello from Spotify Api')
 })
 ///USERS
-const userRoutes = require('./routes/userRoutes')
-app.use('/users' , userRoutes)
+const authRoutes = require('./routes/authRoutes')
+app.use('/auth' , authRoutes)
+
+///SONGS
+const songRoutes = require('./routes/songRoutes')
+app.use('/songs' , songRoutes)
 
 ///ERROR
 app.all('*' , (req,res,next)=>{

@@ -16,6 +16,7 @@ const signup = CatchAsync(async(req,res,next) => {
         username,
         email,
         password : hashPassword,
+        profileimg : req.file.filename
     })
 
     const token = GenerateToken({email : newUser.email , id : newUser._id })
